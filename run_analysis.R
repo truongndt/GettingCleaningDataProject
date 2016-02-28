@@ -14,7 +14,7 @@ subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt",header = F
 X_train <- read.table("UCI HAR Dataset/train/X_train.txt",header = FALSE)
 Y_train <- read.table("UCI HAR Dataset/train/y_train.txt",header = FALSE)
 
-## Read test data
+## Read train data
 
 subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt",header = FALSE)
 X_test <- read.table("UCI HAR Dataset/test/X_test.txt",header = FALSE)
@@ -28,7 +28,7 @@ S <- rbind(subject_train, subject_test)
 
 # 2. Extracts only the measurements on the mean and standard deviation for each measurement.
 
-## Read features data
+## Read train data
 
 features <- read.table("UCI HAR Dataset/features.txt", header = FALSE)
 mdfeatures <- grepl("mean\\(\\)|std\\(\\)",features$V2)
@@ -58,7 +58,7 @@ data <- cbind(S,Y,X)
 
 library(reshape2)
 melted = melt(data, id.var = c("Subject", "Activity"))
-tidydata = dcast(melted , Subject + Activity ~ names(X), mean)
+tidydata = dcast(melted , Subject + Activity ~ variable, mean)
 
 # Tidy data file
 write.table(tidydata, file = "tidydata.txt", sep = " ", row.name = FALSE)
