@@ -28,7 +28,7 @@ S <- rbind(subject_train, subject_test)
 
 # 2. Extracts only the measurements on the mean and standard deviation for each measurement.
 
-## Read train data
+## Read features data
 
 features <- read.table("UCI HAR Dataset/features.txt", header = FALSE)
 mdfeatures <- grepl("mean\\(\\)|std\\(\\)",features$V2)
