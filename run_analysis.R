@@ -50,6 +50,7 @@ data <- cbind(S,Y,X)
 
 #5. Create summary dataset with means for each variable by each actifity and subject.
 
+library(reshape2)
 melted = melt(data, id.var = c("Subject", "Activity"))
 tidydata = dcast(melted , Subject + Activity ~ names(X), mean)
 
