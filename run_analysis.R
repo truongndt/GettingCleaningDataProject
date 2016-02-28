@@ -55,4 +55,4 @@ melted = melt(data, id.var = c("Subject", "Activity"))
 tidydata = dcast(melted , Subject + Activity ~ names(X), mean)
 
 # Tidy data file
-write.table(tidydata, file = "tidydata.txt", row.name = FALSE)
+write.table(tidydata, file = "tidydata.txt", sep = " ", row.name = FALSE)
