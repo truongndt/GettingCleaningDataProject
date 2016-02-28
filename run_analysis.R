@@ -44,6 +44,12 @@ Y[, 1] <- activity_labels[Y[, 1], 2]
 
 # 4. Appropriately labels the data set with descriptive variable names.
 names(X) <- gsub("\\(|\\)", "", (features[mdfeatures, 2]))
+names(X) <-gsub("^t", "time", names(X))
+names(X) <-gsub("^f", "frequency", names(X))
+names(X) <-gsub("Acc", "Accelerometer", names(X))
+names(X) <-gsub("Gyro", "Gyroscope", names(X))
+names(X) <-gsub("Mag", "Magnitude", names(X))
+names(X) <-gsub("BodyBody", "Body", names(X))
 names(Y) <- "Activity"
 names(S) <- "Subject"
 data <- cbind(S,Y,X)
